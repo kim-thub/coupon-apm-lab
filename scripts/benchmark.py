@@ -265,7 +265,7 @@ def main():
     try:
         from dotenv import load_dotenv
         load_dotenv(ROOT / ".env")
-        import requests, psycopg, locust, matplotlib
+        import requests, psycopg, matplotlib
     except ImportError as exc:
         print(f"Missing Python dependencies: {exc}; install: pip install -r requirements.txt", file=sys.stderr)
         return 2
