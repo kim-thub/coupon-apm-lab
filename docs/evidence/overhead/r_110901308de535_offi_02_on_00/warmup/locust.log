@@ -1,0 +1,19 @@
+[2026-11-09 10:47:16,132] gimsubin-ui-MacBookPro/INFO/locust.main: Starting Locust 2.47.0
+[2026-11-09 10:47:16,134] gimsubin-ui-MacBookPro/INFO/locust.main: Run time limit set to 60 seconds
+[2026-11-09 10:47:16,137] gimsubin-ui-MacBookPro/INFO/locust.runners: Ramping to 100 users at a rate of 10.00 per second
+[2026-11-09 10:47:25,145] gimsubin-ui-MacBookPro/INFO/locust.runners: All users spawned: {"IssuerUser": 100} (100 total users)
+[2026-11-09 10:48:15,955] gimsubin-ui-MacBookPro/INFO/locust.main: --run-time limit reached, shutting down
+[2026-11-09 10:48:15,987] gimsubin-ui-MacBookPro/INFO/locust.main: Shutting down (exit code 0)
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+POST     POST /api/coupons/{couponId}/issues                                            27059     0(0.00%) |      4       0     152      2 |  452.10        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                     27059     0(0.00%) |      4       0     152      2 |  452.10        0.00
+
+Response time percentiles (approximated)
+Type     Name                                                                                  50%    66%    75%    80%    90%    95%    98%    99%  99.9% 99.99%   100% # reqs
+--------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+POST     POST /api/coupons/{couponId}/issues                                                     2      3      3      3      5     10     35     61    110    150    150  27059
+--------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+         Aggregated                                                                              2      3      3      3      5     10     35     61    110    150    150  27059
+

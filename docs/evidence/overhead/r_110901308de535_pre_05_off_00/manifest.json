@@ -1,0 +1,57 @@
+{
+  "runId": "r_110901308de535_pre_05_off_00",
+  "family": "pre",
+  "sequence": 5,
+  "apmEnabled": false,
+  "applicationImageId": "sha256:be20ac2f5dc45e6815381e8e594693733b2a9ac823b1c31007079445b2d12b62",
+  "gitCommit": "a3e9e68fd9fa7a62c4ba5ff432c48998b8ae7362",
+  "startedAt": "2026-11-09T01:39:51.218332+00:00",
+  "status": "INVALID",
+  "load": {
+    "users": 100,
+    "spawnRatePerSecond": 10,
+    "durationSeconds": 60,
+    "waitBetweenRequestsSeconds": [
+      0.1,
+      0.3
+    ],
+    "stopGraceSeconds": 15
+  },
+  "warmupCouponsPerUser": 601,
+  "measureCouponsPerUser": 601,
+  "postgresVolumePolicy": "same PostgreSQL instance+volume; new run-owned database",
+  "phaseDatabasePolicy": "warmup and measurement share the SAME app process and DB",
+  "invalidReasons": [
+    "DB commit cross-check mismatch: missing=0, unexpected=5",
+    "RuntimeError: warmup INVALID: ['DB commit cross-check mismatch: missing=0, unexpected=5']"
+  ],
+  "database": "coupon_r_110901308de535_pre_05_off_00",
+  "appContainerId": "a7e8105671f3f69b8238fe53cfd7de4654ba484504739c00181e5f03d15e55c4",
+  "actualApplicationImageId": "sha256:be20ac2f5dc45e6815381e8e594693733b2a9ac823b1c31007079445b2d12b62",
+  "containerResources": {
+    "nanoCpus": 2000000000,
+    "memoryBytes": 805306368
+  },
+  "runtimeEnvironment": {
+    "JAVA_TOOL_OPTIONS": "-Xms256m -Xmx512m -XX:+UseG1GC",
+    "APM_ENABLED": "false",
+    "SPRING_PROFILES_ACTIVE": "benchmark"
+  },
+  "statusBeforeWarmup": {
+    "ready": true,
+    "apmEnabled": false,
+    "databaseReady": true,
+    "applicationVersion": "0.1.0",
+    "gitCommit": "a3e9e68fd9fa7a62c4ba5ff432c48998b8ae7362",
+    "database": "coupon_r_110901308de535_pre_05_off_00"
+  },
+  "ddlVersion": "1",
+  "postgresVersion": "16.6 (Debian 16.6-1.pgdg120+1)",
+  "smoke": {
+    "couponId": 1,
+    "apmRecordObserved": false
+  },
+  "warmupCouponCount": 60100,
+  "warmupValidation": "INVALID",
+  "finishedAt": "2026-11-09T01:40:55.597005+00:00"
+}

@@ -2,7 +2,7 @@
 
 **동시 쿠폰 발급의 PostgreSQL 행 잠금과 경량 APM으로 관찰하는 실제 병목** — Java 21 / Spring Boot / PostgreSQL / Locust 포트폴리오 프로젝트.
 
-> **최근 검증 (2026-11-09):** JDK 21 / Gradle 8.14.3 / Docker 환경에서 `./gradlew test integrationTest`가 통과했습니다 (단위 8건, 통합 12건, 실패 0건). 실제 PostgreSQL 행 잠금 증거는 `docs/evidence/lock-wait/`에 있습니다. AC07 Locust 성능 실험 12회는 **NOT_RUN**이며, 성능 수치나 그래프를 만들지 않았습니다. 실행 기록과 과거 환경의 차단 기록은 `docs/evidence/test-results.txt`, 인수 조건별 상태는 `docs/evidence/ac-results.md`를 참조하세요.
+> **최근 검증 (2026-11-09):** JDK 21 / Gradle 8.14.3 / Docker 환경에서 `./gradlew test integrationTest`가 통과했습니다 (단위 8건, 통합 12건, 실패 0건). AC07 Locust 실험은 사전 유효 6회와 정식 유효 6회를 확보했고 정식 목표 임계값을 통과했습니다. 다만 OFF 조건 p95 변동이 커 `REVIEW_REQUIRED`로 남겼으므로 APM 오버헤드가 없다고 단정하지 않습니다. 실행 기록과 원본 증거는 `docs/evidence/test-results.txt`, `docs/evidence/overhead/`, 인수 조건별 상태는 `docs/evidence/ac-results.md`를 참조하세요.
 
 ## 1. 준비 (Linux / WSL2)
 

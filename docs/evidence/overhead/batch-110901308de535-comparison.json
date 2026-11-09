@@ -1,0 +1,31 @@
+{
+  "validity": "VALID",
+  "target": "PASS",
+  "variance": "REVIEW_REQUIRED",
+  "offMedianP95Ms": 8.33704,
+  "onMedianP95Ms": 6.99942,
+  "offMedianTps": 447.5,
+  "onMedianTps": 451.45,
+  "p95IncreasePercent": -16.044303493805955,
+  "successTpsDecreasePercent": -0.8826815642458019,
+  "runIds": [
+    "r_110901308de535_offi_01_off_00",
+    "r_110901308de535_offi_02_on_00",
+    "r_110901308de535_offi_03_on_00",
+    "r_110901308de535_offi_04_off_00",
+    "r_110901308de535_offi_05_off_00",
+    "r_110901308de535_offi_06_on_00"
+  ],
+  "prelimRunIds": [
+    "r_110901308de535_pre_01_off_00",
+    "r_110901308de535_pre_02_on_00",
+    "r_110901308de535_pre_03_on_00",
+    "r_110901308de535_pre_04_off_00",
+    "r_110901308de535_pre_05_off_01",
+    "r_110901308de535_pre_06_on_00"
+  ],
+  "M": 306,
+  "perUserCoupons": 612,
+  "gitCommit": "a3e9e68fd9fa7a62c4ba5ff432c48998b8ae7362",
+  "createdAt": "2026-11-09T01:57:46.387519+00:00"
+}

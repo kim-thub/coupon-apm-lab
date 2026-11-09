@@ -1,0 +1,10 @@
+{
+  "runId": "r_110901308de535_offi_02_on_00",
+  "phase": "warmup",
+  "windowStart": "2026-11-09T01:47:16.137584+00:00",
+  "windowEnd": "2026-11-09T01:48:16.137716+00:00",
+  "recordsCount": 27059,
+  "locustCount": 27059,
+  "startedUsers": 100,
+  "errors": []
+}

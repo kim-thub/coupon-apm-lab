@@ -2,8 +2,8 @@
 
 - **2026-11-09 09:52 KST:** `./gradlew test integrationTest` 성공. JDK 21.0.12.1 / Gradle 8.14.3 / Docker 29.7.2.
 - JUnit 결과: 단위 테스트 8건, 통합 테스트 12건, 총 20건; 실패/오류/건너뜀 0건. 실제 PostgreSQL 행 잠금과 APM Monitor 캡처를 확인했고 원본은 `docs/evidence/lock-wait/`에 저장했다.
-- `python3 scripts/benchmark.py --dry-run`은 2026-11-09에 성공했다. 이는 실행 순서 확인만 하며 성능 측정 결과가 아니다.
-- **AC07 성능 실험은 NOT_RUN.** 현재 Python 환경에 Locust 및 `requirements.txt` 패키지가 설치되지 않았다. 측정을 실행하기 전에 `python3 -m venv .venv`와 `.venv/bin/pip install -r requirements.txt`가 필요하다.
+- `python3 scripts/benchmark.py --dry-run`은 2026-11-09에 성공했다. 이후 Python 의존성을 설치하고 AC07 실험을 실제 실행했다.
+- **AC07 (2026-11-09 10:57 KST):** 사전 유효 6회(7회 시도, 1회 재시도)와 정식 6회를 실행. 정식 실행 6회 모두 VALID, 목표 PASS, 분산 REVIEW_REQUIRED. OFF/ON p95 중앙값 8.33704/6.99942ms, 성공 TPS 중앙값 447.50/451.45. OFF p95 최대/최소 비율 2.46이 허용치 1.15를 초과했다. 전체 요약과 원본은 `docs/evidence/overhead/`에 있다. 사전 실행 `pre_05_off_00`은 DB 교차검증 5건 불일치로 INVALID 처리됐고, 보존된 재시도 `pre_05_off_01`은 VALID였다.
 - 아래 2026-11-08 기록은 당시의 초기 실행 환경에서 발생한 BLOCKED 결과를 보존한다. 최신 검증 결과와 혼동하지 않는다.
 
 ## 2026-11-08 초기 환경의 명령 기록 (Asia/Seoul)

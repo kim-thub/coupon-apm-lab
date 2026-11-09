@@ -1,0 +1,10 @@
+{
+  "runId": "r_110901308de535_pre_05_off_01",
+  "phase": "measure",
+  "windowStart": "2026-11-09T01:42:00.680168+00:00",
+  "windowEnd": "2026-11-09T01:43:00.680300+00:00",
+  "recordsCount": 27284,
+  "locustCount": 27284,
+  "startedUsers": 100,
+  "errors": []
+}
