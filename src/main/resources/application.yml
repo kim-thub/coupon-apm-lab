@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/postgres}
+    username: ${SPRING_DATASOURCE_USERNAME:lab}
+    password: ${SPRING_DATASOURCE_PASSWORD:local_development_only}
+    hikari:
+      maximum-pool-size: ${HIKARI_MAX_POOL_SIZE:16}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+server:
+  port: 8080
+apm:
+  enabled: ${APM_ENABLED:true}
+  slow-threshold-ms: 500
+  monitor-interval-ms: 100
+  max-stack-frames: 64

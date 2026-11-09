@@ -1,0 +1,1 @@
+[{pid=103, blocking_pids=125, wait_event_type=Lock, wait_event=transactionid, query=select c1_0.id,c1_0.created_at,c1_0.issued_count,c1_0.name,c1_0.total_stock from coupons c1_0 where c1_0.id=$1 for no key update of c1_0}]

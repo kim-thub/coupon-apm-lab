@@ -1,0 +1,12 @@
+python3 -m unittest discover -s tests -v
+test_commit_cross_check_and_60_second_boundary (test_analysis.AnalysisTest.test_commit_cross_check_and_60_second_boundary) ... ok
+test_compare_medians_and_variance_not_hidden (test_analysis.AnalysisTest.test_compare_medians_and_variance_not_hidden) ... ok
+test_nearest_rank_p95_not_interpolated (test_analysis.AnalysisTest.test_nearest_rank_p95_not_interpolated) ... ok
+test_duplicate_missing_id_and_negative_ms_fail (test_xview.XviewTest.test_duplicate_missing_id_and_negative_ms_fail) ... ok
+test_empty_xview_refused_by_plot (test_xview.XviewTest.test_empty_xview_refused_by_plot) ... ok
+test_raw_to_evidence_preserves_id_start_time_duration (test_xview.XviewTest.test_raw_to_evidence_preserves_id_start_time_duration) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+OK
