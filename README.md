@@ -1,6 +1,16 @@
 # coupon-apm-lab
 
-PostgreSQL 행 잠금으로 쿠폰 발급 경쟁 조건을 제어하고, 직접 만든 경량 APM으로 실제 잠금 대기를 관찰하는 Java 21 포트폴리오 프로젝트입니다.
+쿠폰 발급 시스템의 경쟁 조건을 PostgreSQL로 제어하고, 직접 만든 경량 APM으로 요청 흐름과 실제 DB 잠금 대기를 관찰한 Java 21 실험 프로젝트입니다. 쿠폰 정합성, APM 구현, X-View 관측 화면, APM의 성능 영향을 한 저장소에서 다룹니다.
+
+## 최종 보고서
+
+[AC01~AC11 통합 보고서 — Markdown](docs/report.md) · [HTML 버전](docs/report.html)
+
+## 이 프로젝트에서 검증한 것
+
+- **쿠폰 동시성:** 행 잠금과 중복·재고 검사를 적용하고, 응답뿐 아니라 PostgreSQL에 커밋된 발급 이력과 수량을 대조했습니다.
+- **경량 APM과 X-View:** 느린 요청 Stack 캡처, 요청별 처리 기록, 보관 상한을 구현하고 실제 PostgreSQL 행 잠금 대기 중 수집된 정보를 확인했습니다.
+- **APM 성능 영향:** AC07 공식 1차 PASS, 2차 FAIL, 3차 PASS입니다. 공식 세 배치 모두 `REVIEW_REQUIRED`이며 2차 p95 급등의 원인은 미확정입니다. 추가 재측정 PASS와 동기·비동기 로깅 진단은 공식 배치와 분리했습니다.
 
 ## 검증 요약
 
@@ -10,7 +20,7 @@ PostgreSQL 행 잠금으로 쿠폰 발급 경쟁 조건을 제어하고, 직접 
 - **추가 재측정:** `11092304b3ccfc`도 유효한 PASS였으며 공식 1·2·3차와 분리해 기록했습니다. 동기·비동기 로깅 진단 역시 공식 성능 배치와 별도입니다.
 - **2026-11-10 테스트:** Gradle 빌드·단위 11건, PostgreSQL 통합 12건, Python 단위 6건 통과.
 
-통합 결과와 한계는 [HTML 보고서](docs/report.html) 또는 [Markdown 보고서](docs/report.md)를 확인하세요. ADR 결정 이력은 [결정 기록](docs/07-decision-log.md)에 보존합니다.
+ADR 결정 이력은 [결정 기록](docs/07-decision-log.md)에 보존합니다.
 
 ## 실행
 

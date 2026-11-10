@@ -17,19 +17,45 @@ header,footer{display:block}
 .kicker{font:600 11px/1.5 -apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#666;border-bottom:2px solid #333;padding:0 0 14px;margin-bottom:32px}
 .report-nav{font-size:13px;margin:8px 0 38px;color:#626262;padding-bottom:12px;border-bottom:1px solid #ddd}
 .report-nav a{margin-right:17px;display:inline-block;white-space:nowrap}
-h2{scroll-margin-top:20px}h3{scroll-margin-top:20px}
+h2{scroll-margin-top:20px}h3{scroll-margin-top:20px}h4{font-size:15px;line-height:1.5;margin:25px 0 9px;font-weight:650}h5{font-size:14px;line-height:1.5;margin:20px 0 8px;font-weight:650}
 main>p:first-of-type{color:#666}
 blockquote{margin:28px 0;padding:0 0 0 16px;border-left:2px solid #999;color:#444}
 @media print{.report-nav{display:none}}
 </style></head><body><main><header class="kicker">Coupon APM Lab · Technical Verification Report / 2026.11.10</header><nav class="report-nav" aria-label="보고서 목차"><a href="#section-2">1. 실험 설계와 판정 원칙</a><a href="#section-3">2. 인수조건별 검증 결과</a><a href="#section-4">3. AC07 실패 가설과 후속 진단</a><a href="#section-5">4. 종합 결론과 한계</a><a href="#section-6">5. 증거 자료와 재현 정보</a></nav><h1>쿠폰 발급 경쟁 조건과 경량 APM 검증</h1>
 <p><strong>통합 기술 검증 보고서 · 2026-11-10</strong> Java 21 · Spring Boot · PostgreSQL · Locust</p>
 <h2 id="section-1">요약</h2>
-<p>이 실험은 쿠폰 발급의 <strong>동시성 정합성</strong>과 직접 구현한 <strong>APM의 관측 능력·성능 영향</strong>을 검증한다. 동시 발급, 중복 방지, 품절 처리, 느린 요청 캡처, 실제 PostgreSQL 잠금 대기 등 <strong>AC01~AC06 및 AC08~AC11은 기록된 검증 범위에서 통과</strong>했다.</p>
-<p>성능 인수조건인 <strong>AC07 공식 측정은 1차 PASS, 2차 FAIL, 3차 PASS</strong>로 판정됐다. 가장 최근 공식 3차 배치는 p95 증가율 <strong>+1.11%</strong>, 성공 TPS 감소율 <strong>−0.41%</strong>로 목표를 충족했다. 이와 별도로 같은 절차의 유효한 <strong>추가 재측정 <code>11092304b3ccfc</code></strong>도 PASS였고, 공식 3차에 합산하지 않았다. <strong>공식 세 배치와 추가 재측정 모두 <code>REVIEW_REQUIRED</code></strong>이며 2차에서 관찰된 <strong>+309.71%</strong> 급등의 원인은 확인되지 않았다. 따라서 개별 배치의 목표 통과와 <strong>반복 측정에서 안정적인 성능 보장</strong>은 구별해야 한다. 후속 동기·비동기 로그 경로 진단에서 p95 차이는 +0.38%로 로깅 병목 가설을 지지하지 않았다.</p>
-<p>이 문서는 <strong>11개 인수조건의 검증을 한 편에 통합</strong>한다. 본문에는 실험 방법과 관찰 결과만 싣고, 원본 파일과 실행 기록은 <strong>맨 끝의 ‘증거 자료’</strong>에서 번호로 연결했다. 자료 번호 <code>[E01]</code> 등은 마지막 절의 실험 증거 목록에 대응한다.</p>
+<p>이 저장소는 PostgreSQL 기반 쿠폰 발급의 경쟁 조건을 다루고, Spring MVC 요청을 관측하는 경량 APM과 X-View를 직접 구현한 프로젝트다. 이 보고서는 기능 검증과 APM의 관측·성능 결과를 AC01~AC11로 정리한다.</p>
+<table><thead><tr><th style="text-align:left">읽기 요점</th><th style="text-align:left">결과</th></tr></thead><tbody>
+<tr><td style="text-align:left"><strong>만든 것</strong></td><td style="text-align:left">DB 행 잠금·고유성 제약을 이용한 쿠폰 발급과, 느린 요청을 기록하고 X-View로 보여주는 경량 APM</td></tr>
+<tr><td style="text-align:left"><strong>검증한 것</strong></td><td style="text-align:left">AC01~AC06 및 AC08~AC11은 기록된 범위에서 PASS. 재고 30개에 사용자 100명이 요청한 시험은 성공 30건·품절 70건으로 DB 상태와 일치했고, 실제 PostgreSQL 잠금 대기도 관측했다.</td></tr>
+<tr><td style="text-align:left"><strong>성능 측정</strong></td><td style="text-align:left">AC07 공식 결과는 1차 PASS, 2차 FAIL, 3차 PASS. 추가 재측정도 PASS지만 공식 결과에 합치지 않았다. 네 배치 모두 <code>REVIEW_REQUIRED</code>다.</td></tr>
+<tr><td style="text-align:left"><strong>아직 입증하지 못한 것</strong></td><td style="text-align:left">성능이 실행환경 전반에서 안정적으로 유지되는지, 2차 p95 급등의 원인이 무엇인지는 미확정이다. 각 배치의 APM ON/OFF 표본은 3회이며 통계적 유의성 검정·신뢰구간을 산출하지 않았다.</td></tr>
+</tbody></table>
+<p>공식 AC07 측정에서는 호스트 전체·프로세스별 CPU를 수집하지 않았다. 실패 당시 다른 CPU 작업이 있었다는 회고는 가능한 설명일 뿐 원인 증거가 아니다. app·DB 자원 지표와 GC 로그는 별도 동기·비동기 로깅 진단에서만 수집했으므로 공식 배치의 원인을 설명하지 못한다. 공개 증거에는 요청별 원시 자료가 모두 포함되지 않아, 공개 파일만으로 요청 단위 p95를 다시 계산할 수도 없다. 별도 진단의 p95 차이는 +0.38%로 로깅 병목 가설을 지지하지 않았다.</p>
+<p>이 문서는 <strong>11개 인수조건의 검증을 한 편에 통합</strong>한다. 원본 파일과 실행 기록은 마지막 ‘증거 자료’ 절에서 번호로 연결했다. 자료 번호 <code>[E01]</code> 등은 해당 절의 목록을 참조한다.</p>
 <h2 id="section-2">1. 실험 설계와 판정 원칙</h2>
 <p>쿠폰 발급 요청은 PostgreSQL 트랜잭션에서 쿠폰 행을 잠근 다음, 이미 발급한 사용자인지 검사하고 재고가 남아 있으면 발급 이력과 발급 수량을 함께 갱신한다. DB에는 쿠폰·사용자 조합에 대한 고유성 제약과 발급 수량 상한 제약도 둔다. <strong>HTTP 성공 응답만으로 정합성을 판정하지 않고 실제 DB 이력·발급 수량을 대조</strong>한다.</p>
 <p>APM은 지정된 Spring MVC 처리 구간을 계측한다. 기본 감시 주기는 100ms, 느린 요청 임계값은 500ms, Stack 기록 상한은 64프레임이다. APM 내부 경과시간은 <strong>Locust가 측정하는 클라이언트 응답시간과 측정 구간이 다르다</strong>. 두 값을 직접 빼서 특정 처리 단계의 비용으로 확정하지 않는다.</p>
+<h3>쿠폰 동시성 흐름</h3>
+<pre><code>동시 발급 요청
+    ↓
+PostgreSQL 트랜잭션 · 쿠폰 행 잠금 (PESSIMISTIC_WRITE)
+    ↓
+중복 확인 ── 이미 발급됨 → 중복 응답
+    ↓ 아니오
+재고 확인 ── 재고 없음 → 품절 응답
+    ↓ 있음
+발급 이력 저장 + issued_count 갱신 → 같은 트랜잭션으로 커밋
+
+DB 제약: (coupon_id, user_id) UNIQUE · 발급 수량 상한</code></pre>
+<h3>APM 관측 흐름</h3>
+<pre><code>Spring MVC 요청 시작 ── Thread 참조를 활성 요청으로 등록
+    ├─ 요청 완료 → 트랜잭션 기록 → X-View (최대 1,000건)
+    └─ 100ms 주기 Monitor
+          ├─ 500ms 초과 → Stack 캡처 → SlowTrace (최대 100건)
+          └─ 캡처 전 요청 완료 → COMPLETION_FALLBACK으로 보완
+요청 종료 finally → 활성 요청 제거 · Thread 참조 해제</code></pre>
+
 <p>검증 결과를 다음처럼 구분했다.</p>
 <table><thead><tr><th style="text-align:left">구분</th><th style="text-align:left">의미</th></tr></thead><tbody>
 <tr><td style="text-align:left"><code>PASS</code></td><td style="text-align:left">해당 인수조건의 기록된 검증 범위에서 기대 결과 충족</td></tr>
@@ -77,14 +103,25 @@ blockquote{margin:28px 0;padding:0 0 0 16px;border-left:2px solid #999;color:#44
 <p><strong>관찰 결과.</strong> X-View는 <strong>201~1,200번</strong>, SlowTrace는 <strong>11~110번</strong> 항목을 유지했다. 반환된 목록은 변경 불가능했고, 동시 접근 중에도 보관 수가 설정 상한을 넘지 않았다.</p>
 <p><strong>판정: PASS.</strong> 메모리 보관 <strong>항목 수</strong>가 상한을 지키는 것을 검증했다. 전체 JVM 메모리 사용량에 대한 장기 검증은 아니다. [E01]</p>
 <h3>AC07 — APM을 켰을 때 성능 영향이 허용 범위 안에 있는가</h3>
+<h4>결과 요약</h4>
+<table><thead><tr><th style="text-align:left">배치</th><th style="text-align:left">구분</th><th style="text-align:right">p95 변화</th><th style="text-align:right">성공 TPS 변화율</th><th style="text-align:left">목표</th><th style="text-align:left">편차</th></tr></thead><tbody>
+<tr><td style="text-align:left"><code>110901308de535</code></td><td style="text-align:left">공식 1차</td><td style="text-align:right">−16.04%</td><td style="text-align:right">−0.88%</td><td style="text-align:left">PASS</td><td style="text-align:left">REVIEW_REQUIRED</td></tr>
+<tr><td style="text-align:left"><code>1109034678e297</code></td><td style="text-align:left">공식 2차</td><td style="text-align:right"><strong>+309.71%</strong></td><td style="text-align:right">+1.28%</td><td style="text-align:left"><strong>FAIL</strong></td><td style="text-align:left">REVIEW_REQUIRED</td></tr>
+<tr><td style="text-align:left"><code>110923334c54bc</code></td><td style="text-align:left">공식 3차</td><td style="text-align:right">+1.11%</td><td style="text-align:right">−0.41%</td><td style="text-align:left">PASS</td><td style="text-align:left">REVIEW_REQUIRED</td></tr>
+<tr><td style="text-align:left"><code>11092304b3ccfc</code></td><td style="text-align:left">추가 재측정</td><td style="text-align:right">−9.21%</td><td style="text-align:right">−0.49%</td><td style="text-align:left">PASS</td><td style="text-align:left">REVIEW_REQUIRED</td></tr>
+</tbody></table>
+<p>배치별로 APM OFF 3회와 ON 3회를 비교했다. 표본이 적고 신뢰구간이나 통계적 유의성 검정을 산출하지 않았으므로, PASS 배치만으로 반복 가능한 성능 보장을 결론 내릴 수 없다. 공식 측정 당시 호스트 전체·프로세스별 CPU 사용량도 수집하지 않았다. 특히 2차 실패 원인을 CPU 경합으로 확정할 수 없다. 추가 재측정은 공식 1·2·3차와 별도로 보존한다. [E07] [E09] [E15] [E20]</p>
+<h4>측정 조건과 판정 기준</h4>
 <p><strong>검증 방법.</strong> Locust 가상 사용자 최대 <strong>100명</strong>, 초당 <strong>10명</strong>씩 증가, 요청 사이 대기 <strong>0.1~0.3초</strong> 조건을 사용했다. 실행마다 <strong>워밍업 60초 + 측정 60초</strong>이며, 사전 6회·정식 6회를 배치별로 실행했다. 정식 순서는 <code>OFF → ON → ON → OFF → OFF → ON</code>이다.</p>
 <p>실행마다 독립 PostgreSQL <strong>데이터베이스</strong>와 새 애플리케이션 프로세스를 사용했다. 같은 실행의 워밍업과 측정은 <strong>같은 DB·프로세스</strong>를 유지했다. DB가 분리돼도 같은 PostgreSQL 인스턴스의 CPU·WAL·디스크 I/O까지 분리되는 것은 아니다.</p>
 <p>비교 대상은 <strong>커밋과 대조된 성공 TPS</strong> 및 성공 요청에 대한 클라이언트 p95(Nearest-Rank)이다. OFF/ON 각 3회 중앙값의 p95 증가율과 TPS 감소율이 <strong>각각 15% 이하</strong>여야 한다. 동일 모드의 최대/최소 비율이 <strong>1.15 초과</strong>이면 유효성 여부와 별도로 편차 검토를 표시한다.</p>
+<h4>배치별 상세 기록</h4>
 <table><thead><tr><th style="text-align:left">공식 배치</th><th style="text-align:right">OFF p95</th><th style="text-align:right">ON p95</th><th style="text-align:right">p95 변화</th><th style="text-align:left">성공 TPS OFF → ON</th><th style="text-align:left">목표</th><th style="text-align:left">편차</th></tr></thead><tbody>
 <tr><td style="text-align:left">1차 <code>110901308de535</code></td><td style="text-align:right">8.337ms</td><td style="text-align:right">6.999ms</td><td style="text-align:right">−16.04%</td><td style="text-align:left">447.50 → 451.45</td><td style="text-align:left">PASS</td><td style="text-align:left">REVIEW_REQUIRED</td></tr>
 <tr><td style="text-align:left">2차 <code>1109034678e297</code></td><td style="text-align:right">5.582ms</td><td style="text-align:right">22.872ms</td><td style="text-align:right"><strong>+309.71%</strong></td><td style="text-align:left">451.67 → 445.90</td><td style="text-align:left"><strong>FAIL</strong></td><td style="text-align:left">REVIEW_REQUIRED</td></tr>
 <tr><td style="text-align:left">3차 <code>110923334c54bc</code></td><td style="text-align:right">5.340ms</td><td style="text-align:right">5.399ms</td><td style="text-align:right"><strong>+1.11%</strong></td><td style="text-align:left">452.13 → 454.00</td><td style="text-align:left"><strong>PASS</strong></td><td style="text-align:left">REVIEW_REQUIRED</td></tr>
 </tbody></table>
+<h5>추가 재측정 회차</h5>
 <p>같은 측정 절차로 실행된 유효한 추가 배치 <code>11092304b3ccfc</code>는 공식 1·2·3차와 구분해 보존한다. OFF/ON p95 중앙값은 5.00379/4.54271ms, p95 변화는 −9.21%였고, 성공 TPS 중앙값은 452.55/454.78, TPS 감소율은 −0.49%였다. 목표는 PASS, 편차는 <code>REVIEW_REQUIRED</code>다. 이 추가 배치의 여섯 정식 회차도 모두 VALID다.</p>
 <table><thead><tr><th style="text-align:right">순서</th><th style="text-align:left">APM</th><th style="text-align:right">p95(ms)</th><th style="text-align:right">성공 TPS</th><th style="text-align:left">유효성</th></tr></thead><tbody>
 <tr><td style="text-align:right">01</td><td style="text-align:left">OFF</td><td style="text-align:right">6.12096</td><td style="text-align:right">450.75</td><td style="text-align:left">VALID</td></tr>
@@ -95,6 +132,7 @@ blockquote{margin:28px 0;padding:0 0 0 16px;border-left:2px solid #999;color:#44
 <tr><td style="text-align:right">06</td><td style="text-align:left">ON</td><td style="text-align:right">4.93929</td><td style="text-align:right">451.25</td><td style="text-align:left">VALID</td></tr>
 </tbody></table>
 <p>이 추가 배치도 OFF 회차 p95의 최대/최소 비율이 1.15 검토선을 넘어 편차 검토가 필요하다. 공식 3차와 평균하거나 그 결과를 대체하지 않는다. 공식 세 배치와 추가 재측정의 정식 회차는 실행 ID로 구분해 보존했다. [E18] [E20] [E21]</p>
+<h5>공식 2차 FAIL 회차</h5>
 <p>2차 배치에서 TPS는 <strong>1.28% 감소</strong>해 기준을 충족했다. 그러나 p95 기준만 실패했다. 아래는 2차 <strong>정식 6회</strong>의 개별 기록이다.</p>
 <table><thead><tr><th style="text-align:right">순서</th><th style="text-align:left">APM</th><th style="text-align:right">p95(ms)</th><th style="text-align:right">성공 TPS</th><th style="text-align:left">유효성</th></tr></thead><tbody>
 <tr><td style="text-align:right">01</td><td style="text-align:left">OFF</td><td style="text-align:right">5.639</td><td style="text-align:right">451.67</td><td style="text-align:left">VALID</td></tr>
@@ -106,6 +144,7 @@ blockquote{margin:28px 0;padding:0 0 0 16px;border-left:2px solid #999;color:#44
 </tbody></table>
 <p>정식 ON 3회 중 <strong>2회</strong>에서 p95가 약 23ms로 상승했고, OFF 3회는 5.3~5.6ms 범위였다. 모든 정식 회차는 HTTP 201과 DB 커밋 대조를 통과했다. <strong>VALID라는 사실이 성능 목표 충족을 의미하지는 않는다.</strong></p>
 <p>1차에서는 사전 검증 한 회차가 무효 처리되어 재시도했으며, 이후 사전 유효 6회·정식 6회를 확보했다. 2차의 사전·정식 12회는 모두 VALID였다. <strong>3차는 원본 ZIP에 포함된 12회 실행별 검증 결과를 확인했고, 사전 6회·정식 6회 모두 VALID</strong>였다. 3차 정식 측정의 성공 응답과 DB 커밋 대조 건수는 각각 <strong>163,163건</strong>으로 일치한다. 사전 측정의 동일 값은 각각 <strong>163,475건</strong>이다. 모든 실행에서 201 응답 건수·측정된 요청 수·커밋된 발급 수가 일치했다.</p>
+<h5>공식 3차 회차 검증</h5>
 <p>아래는 3차 <strong>정식 6회</strong>의 원본 측정값이다. p95는 측정 구간의 성공 요청에 대한 값이며, 성공 건수는 각 60초 측정 창에서 검증한 건수다.</p>
 <table><thead><tr><th style="text-align:right">순서</th><th style="text-align:left">APM</th><th style="text-align:right">p95(ms)</th><th style="text-align:right">성공 TPS</th><th style="text-align:right">성공·커밋 건수</th><th style="text-align:left">유효성</th></tr></thead><tbody>
 <tr><td style="text-align:right">01</td><td style="text-align:left">OFF</td><td style="text-align:right">5.340</td><td style="text-align:right">452.13</td><td style="text-align:right">27,128</td><td style="text-align:left">VALID</td></tr>
