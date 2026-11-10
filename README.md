@@ -40,3 +40,7 @@ make evidence               # 실제 잠금 시험 결과로 X-View 생성
 ```
 
 AC07은 실행당 워밍업 60초와 측정 60초로, 부하 구간만 최소 24분입니다. Docker/PostgreSQL 자원과 실험 DB를 추가로 사용하며 생성된 실험 DB는 자동 삭제하지 않습니다. 실행 순서와 한계는 [성능 문서](docs/05-performance.md), 재현 절차는 [테스트 재현 문서](docs/test-reproduction.md)에 있습니다.
+
+## License
+
+이 프로젝트는 MIT License로 제공됩니다. 자세한 내용은 [LICENSE](LICENSE)를 확인하세요.
