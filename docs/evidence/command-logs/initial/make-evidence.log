@@ -1,3 +1,0 @@
-python3 scripts/evidence.py
-BLOCKED: real raw X-View JSON and Manifest required: /mnt/data/coupon-apm-lab/docs/evidence/lock-wait/xview-raw.json, /mnt/data/coupon-apm-lab/docs/evidence/lock-wait/manifest.json
-make: *** [Makefile:32: evidence] Error 2

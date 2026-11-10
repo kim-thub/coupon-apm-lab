@@ -1,6 +1,0 @@
-preliminary: ['OFF', 'ON', 'ON', 'OFF', 'OFF', 'ON']
-official:    ['OFF', 'ON', 'ON', 'OFF', 'OFF', 'ON']
-each of 12 valid runs: NEW database + ONE server + 60s warmup Locust session + 60s measurement Locust session
-warmup and measurement share database/server; each session ramps 0 -> 100 @ 10 users/s
-preliminary and warmup: 601 coupons/user; official: ceil(2*M) coupons/user
-validation: HTTP 201 per-request CSV <-> committed DB rows; INVALID runs retained and retried

@@ -1,3 +1,0 @@
-python3 scripts/benchmark.py
-Missing Python dependencies: No module named 'psycopg'; install: pip install -r requirements.txt
-make: *** [Makefile:25: test-overhead] Error 2
