@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+from datetime import timedelta
 from pathlib import Path
 
 # Direct CLI invocation also needs the repository root on sys.path.
@@ -62,7 +63,12 @@ def main():
         if slow:
             ax.scatter([t for t, _ in slow], [ms for _, ms in slow], marker="x", s=40, label="Slow (>=500 ms)")
         ax.axhline(500, linestyle="--", linewidth=1, label="Slow threshold (500 ms)")
+        starts = [t for t, _ in entries]
+        span_seconds = (max(starts) - min(starts)).total_seconds()
+        padding = timedelta(seconds=min(60, max(5, span_seconds * 0.05)))
+        ax.set_xlim(min(starts) - padding, max(starts) + padding)
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%H:%M:%S", tz=__import__("datetime").timezone.utc))
+        ax.xaxis.set_major_locator(mdates.AutoDateLocator(minticks=3, maxticks=8))
         ax.set_xlabel("Request start (UTC)")
         ax.set_ylabel("Spring MVC handler processing time (ms)")
         ax.set_title(f"coupon-apm-lab X-View — {metadata['experiment']}")

@@ -1,0 +1,753 @@
+{
+  "diagnosticId": "2611090611d90a83",
+  "createdAt": "2026-11-09T06:35:33.808580+00:00",
+  "gitCommit": "e200c914a6478b09411ac06a86ddbc0624daa9fb",
+  "applicationImageId": "sha256:36830d324c795387ddacb1f64773117f0e940e06ce38b99fc3c46c794f2240cd",
+  "status": "COMPLETE",
+  "conditions": {
+    "sync": {
+      "mode": "SYNC",
+      "validRuns": 3,
+      "p95MedianMs": 4.7135,
+      "p95RangeMs": [
+        4.4375,
+        6.39779
+      ],
+      "successTpsMedian": 454.56666666666666,
+      "successTpsRange": [
+        450.15,
+        455.45
+      ],
+      "runtimeResourceSummary": {
+        "app": {
+          "cpuAvgPercent": {
+            "median": 17.674833333333332,
+            "range": [
+              17.537,
+              21.444666666666667
+            ]
+          },
+          "cpuMaxPercent": {
+            "median": 37.75,
+            "range": [
+              32.34,
+              85.15
+            ]
+          },
+          "memoryAvgBytes": {
+            "median": 599928777.4833333,
+            "range": [
+              590993162.2333333,
+              600578894.4333333
+            ]
+          },
+          "memoryMaxBytes": {
+            "median": 600729190.0,
+            "range": [
+              598107750.0,
+              608278938.0
+            ]
+          },
+          "blockReadBytes": {
+            "median": 0,
+            "range": [
+              0,
+              0
+            ]
+          },
+          "blockWriteBytes": {
+            "median": 262000,
+            "range": [
+              258000,
+              262000
+            ]
+          },
+          "networkRxBytes": {
+            "median": 38500000,
+            "range": [
+              38200000,
+              38600000
+            ]
+          },
+          "networkTxBytes": {
+            "median": 45000000,
+            "range": [
+              44600000,
+              45100000
+            ]
+          },
+          "pidsAvg": {
+            "median": 66.68333333333334,
+            "range": [
+              62.3,
+              74.75
+            ]
+          },
+          "pidsMax": {
+            "median": 68.0,
+            "range": [
+              63.0,
+              80.0
+            ]
+          }
+        },
+        "db": {
+          "cpuAvgPercent": {
+            "median": 15.244166666666667,
+            "range": [
+              15.0045,
+              16.584333333333333
+            ]
+          },
+          "cpuMaxPercent": {
+            "median": 41.36,
+            "range": [
+              39.51,
+              41.4
+            ]
+          },
+          "memoryAvgBytes": {
+            "median": 228760835.41666666,
+            "range": [
+              223330959.36666667,
+              230744391.63333333
+            ]
+          },
+          "memoryMaxBytes": {
+            "median": 232888730.0,
+            "range": [
+              232049869.0,
+              235719885.0
+            ]
+          },
+          "blockReadBytes": {
+            "median": 0,
+            "range": [
+              0,
+              0
+            ]
+          },
+          "blockWriteBytes": {
+            "median": 210000000,
+            "range": [
+              40000000,
+              270000000
+            ]
+          },
+          "networkRxBytes": {
+            "median": 30000000,
+            "range": [
+              30000000,
+              35000000
+            ]
+          },
+          "networkTxBytes": {
+            "median": 27000000,
+            "range": [
+              20000000,
+              30000000
+            ]
+          },
+          "pidsAvg": {
+            "median": 22.033333333333335,
+            "range": [
+              22.016666666666666,
+              22.1
+            ]
+          },
+          "pidsMax": {
+            "median": 23.0,
+            "range": [
+              23.0,
+              28.0
+            ]
+          }
+        }
+      },
+      "locustCpuAveragePercentMedian": 36.553333333333335,
+      "locustRssMaxBytesMedian": 79986688,
+      "gcPauseTotalMsMedian": 0,
+      "transactionLogBytesPerSecondMedian": 112729.31666666667,
+      "transactionOutputDelayP95MsMedian": 0.983,
+      "runIds": [
+        "r_d2611090611d90a83_sync_01_00",
+        "r_d2611090611d90a83_sync_04_00",
+        "r_d2611090611d90a83_sync_05_00"
+      ]
+    },
+    "async": {
+      "mode": "ASYNC",
+      "validRuns": 3,
+      "p95MedianMs": 4.7315,
+      "p95RangeMs": [
+        4.58963,
+        5.73617
+      ],
+      "successTpsMedian": 453.6333333333333,
+      "successTpsRange": [
+        449.8333333333333,
+        456.1166666666667
+      ],
+      "runtimeResourceSummary": {
+        "app": {
+          "cpuAvgPercent": {
+            "median": 19.068,
+            "range": [
+              18.214,
+              21.655
+            ]
+          },
+          "cpuMaxPercent": {
+            "median": 39.92,
+            "range": [
+              29.87,
+              56.31
+            ]
+          },
+          "memoryAvgBytes": {
+            "median": 596442262.1166667,
+            "range": [
+              586559433.4166666,
+              598352418.1166667
+            ]
+          },
+          "memoryMaxBytes": {
+            "median": 603140915.0,
+            "range": [
+              595381453.0,
+              604713779.0
+            ]
+          },
+          "blockReadBytes": {
+            "median": 0,
+            "range": [
+              0,
+              0
+            ]
+          },
+          "blockWriteBytes": {
+            "median": 262000,
+            "range": [
+              262000,
+              266000
+            ]
+          },
+          "networkRxBytes": {
+            "median": 38500000,
+            "range": [
+              38200000,
+              38600000
+            ]
+          },
+          "networkTxBytes": {
+            "median": 45200000,
+            "range": [
+              44700000,
+              45200000
+            ]
+          },
+          "pidsAvg": {
+            "median": 63.68333333333333,
+            "range": [
+              60.166666666666664,
+              74.13333333333334
+            ]
+          },
+          "pidsMax": {
+            "median": 64.0,
+            "range": [
+              61.0,
+              87.0
+            ]
+          }
+        },
+        "db": {
+          "cpuAvgPercent": {
+            "median": 15.323333333333334,
+            "range": [
+              15.258166666666666,
+              17.551333333333332
+            ]
+          },
+          "cpuMaxPercent": {
+            "median": 42.04,
+            "range": [
+              40.02,
+              44.64
+            ]
+          },
+          "memoryAvgBytes": {
+            "median": 226938060.78333333,
+            "range": [
+              225318010.9,
+              232748919.53333333
+            ]
+          },
+          "memoryMaxBytes": {
+            "median": 233203302.0,
+            "range": [
+              227436134.0,
+              239914189.0
+            ]
+          },
+          "blockReadBytes": {
+            "median": 0,
+            "range": [
+              0,
+              0
+            ]
+          },
+          "blockWriteBytes": {
+            "median": 30000000,
+            "range": [
+              20000000,
+              40000000
+            ]
+          },
+          "networkRxBytes": {
+            "median": 40000000,
+            "range": [
+              30000000,
+              40000000
+            ]
+          },
+          "networkTxBytes": {
+            "median": 30000000,
+            "range": [
+              27000000,
+              30000000
+            ]
+          },
+          "pidsAvg": {
+            "median": 22.05,
+            "range": [
+              22.0,
+              22.116666666666667
+            ]
+          },
+          "pidsMax": {
+            "median": 25.0,
+            "range": [
+              22.0,
+              28.0
+            ]
+          }
+        }
+      },
+      "locustCpuAveragePercentMedian": 37.86333333333333,
+      "locustRssMaxBytesMedian": 79970304,
+      "gcPauseTotalMsMedian": 0,
+      "transactionLogBytesPerSecondMedian": 112498.98333333334,
+      "transactionOutputDelayP95MsMedian": 1.027,
+      "runIds": [
+        "r_d2611090611d90a83_async_02_00",
+        "r_d2611090611d90a83_async_03_00",
+        "r_d2611090611d90a83_async_06_00"
+      ]
+    }
+  },
+  "runs": [
+    {
+      "runId": "r_d2611090611d90a83_sync_01_00",
+      "mode": "sync",
+      "attempt": 0,
+      "validity": "VALID",
+      "p95Ms": 4.4375,
+      "successTps": 454.56666666666666,
+      "runPath": "runs/r_d2611090611d90a83_sync_01_00",
+      "runtime": {
+        "complete": true,
+        "measurementSampleCounts": {
+          "app": 60,
+          "db": 60
+        },
+        "containers": {
+          "app": {
+            "cpuAvgPercent": 17.674833333333332,
+            "cpuMaxPercent": 37.75,
+            "memoryAvgBytes": 600578894.4333333,
+            "memoryMaxBytes": 608278938.0,
+            "pidsAvg": 62.3,
+            "pidsMax": 63.0,
+            "blockReadBytes": 0,
+            "blockWriteBytes": 262000,
+            "networkRxBytes": 38500000,
+            "networkTxBytes": 45000000
+          },
+          "db": {
+            "cpuAvgPercent": 15.0045,
+            "cpuMaxPercent": 41.4,
+            "memoryAvgBytes": 223330959.36666667,
+            "memoryMaxBytes": 232888730.0,
+            "pidsAvg": 22.033333333333335,
+            "pidsMax": 23.0,
+            "blockReadBytes": 0,
+            "blockWriteBytes": 210000000,
+            "networkRxBytes": 35000000,
+            "networkTxBytes": 27000000
+          }
+        },
+        "locust": {
+          "cpuAvgPercent": 36.54666666666667,
+          "cpuMaxPercent": 45.9,
+          "rssMaxBytes": 79986688,
+          "sampleCount": 60
+        }
+      },
+      "gc": {
+        "pauseCount": 0,
+        "pauseTotalMs": 0,
+        "pauseMaxMs": 0.0,
+        "pauseTimesMs": []
+      },
+      "logs": {
+        "expectedCount": 27274,
+        "observedCount": 27274,
+        "countMatches": true,
+        "bytes": 6763759,
+        "bytesPerSecond": 112729.31666666667,
+        "outputDelayMedianMs": 0.636,
+        "outputDelayP95Ms": 0.9810000000000001,
+        "outputDelayMaxMs": 29.395999999999997,
+        "negativeDelayCount": 0
+      },
+      "invalidReasons": []
+    },
+    {
+      "runId": "r_d2611090611d90a83_async_02_00",
+      "mode": "async",
+      "attempt": 0,
+      "validity": "VALID",
+      "p95Ms": 5.73617,
+      "successTps": 449.8333333333333,
+      "runPath": "runs/r_d2611090611d90a83_async_02_00",
+      "runtime": {
+        "complete": true,
+        "measurementSampleCounts": {
+          "app": 60,
+          "db": 60
+        },
+        "containers": {
+          "app": {
+            "cpuAvgPercent": 21.655,
+            "cpuMaxPercent": 56.31,
+            "memoryAvgBytes": 596442262.1166667,
+            "memoryMaxBytes": 603140915.0,
+            "pidsAvg": 74.13333333333334,
+            "pidsMax": 87.0,
+            "blockReadBytes": 0,
+            "blockWriteBytes": 262000,
+            "networkRxBytes": 38200000,
+            "networkTxBytes": 44700000
+          },
+          "db": {
+            "cpuAvgPercent": 17.551333333333332,
+            "cpuMaxPercent": 44.64,
+            "memoryAvgBytes": 225318010.9,
+            "memoryMaxBytes": 233203302.0,
+            "pidsAvg": 22.116666666666667,
+            "pidsMax": 28.0,
+            "blockReadBytes": 0,
+            "blockWriteBytes": 20000000,
+            "networkRxBytes": 40000000,
+            "networkTxBytes": 27000000
+          }
+        },
+        "locust": {
+          "cpuAvgPercent": 34.12833333333333,
+          "cpuMaxPercent": 46.4,
+          "rssMaxBytes": 80789504,
+          "sampleCount": 60
+        }
+      },
+      "gc": {
+        "pauseCount": 0,
+        "pauseTotalMs": 0,
+        "pauseMaxMs": 0.0,
+        "pauseTimesMs": []
+      },
+      "logs": {
+        "expectedCount": 26990,
+        "observedCount": 26990,
+        "countMatches": true,
+        "bytes": 6693683,
+        "bytesPerSecond": 111561.38333333333,
+        "outputDelayMedianMs": 0.675,
+        "outputDelayP95Ms": 1.06,
+        "outputDelayMaxMs": 91.019,
+        "negativeDelayCount": 0
+      },
+      "invalidReasons": []
+    },
+    {
+      "runId": "r_d2611090611d90a83_async_03_00",
+      "mode": "async",
+      "attempt": 0,
+      "validity": "VALID",
+      "p95Ms": 4.7315,
+      "successTps": 456.1166666666667,
+      "runPath": "runs/r_d2611090611d90a83_async_03_00",
+      "runtime": {
+        "complete": true,
+        "measurementSampleCounts": {
+          "app": 60,
+          "db": 60
+        },
+        "containers": {
+          "app": {
+            "cpuAvgPercent": 19.068,
+            "cpuMaxPercent": 39.92,
+            "memoryAvgBytes": 598352418.1166667,
+            "memoryMaxBytes": 604713779.0,
+            "pidsAvg": 63.68333333333333,
+            "pidsMax": 64.0,
+            "blockReadBytes": 0,
+            "blockWriteBytes": 266000,
+            "networkRxBytes": 38600000,
+            "networkTxBytes": 45200000
+          },
+          "db": {
+            "cpuAvgPercent": 15.323333333333334,
+            "cpuMaxPercent": 42.04,
+            "memoryAvgBytes": 226938060.78333333,
+            "memoryMaxBytes": 227436134.0,
+            "pidsAvg": 22.0,
+            "pidsMax": 22.0,
+            "blockReadBytes": 0,
+            "blockWriteBytes": 30000000,
+            "networkRxBytes": 30000000,
+            "networkTxBytes": 30000000
+          }
+        },
+        "locust": {
+          "cpuAvgPercent": 37.86333333333333,
+          "cpuMaxPercent": 52.9,
+          "rssMaxBytes": 79970304,
+          "sampleCount": 60
+        }
+      },
+      "gc": {
+        "pauseCount": 0,
+        "pauseTotalMs": 0,
+        "pauseMaxMs": 0.0,
+        "pauseTimesMs": []
+      },
+      "logs": {
+        "expectedCount": 27367,
+        "observedCount": 27367,
+        "countMatches": true,
+        "bytes": 6786858,
+        "bytesPerSecond": 113114.3,
+        "outputDelayMedianMs": 0.6679999999999999,
+        "outputDelayP95Ms": 1.027,
+        "outputDelayMaxMs": 9.732,
+        "negativeDelayCount": 0
+      },
+      "invalidReasons": []
+    },
+    {
+      "runId": "r_d2611090611d90a83_sync_04_00",
+      "mode": "sync",
+      "attempt": 0,
+      "validity": "VALID",
+      "p95Ms": 4.7135,
+      "successTps": 455.45,
+      "runPath": "runs/r_d2611090611d90a83_sync_04_00",
+      "runtime": {
+        "complete": true,
+        "measurementSampleCounts": {
+          "app": 60,
+          "db": 60
+        },
+        "containers": {
+          "app": {
+            "cpuAvgPercent": 17.537,
+            "cpuMaxPercent": 32.34,
+            "memoryAvgBytes": 599928777.4833333,
+            "memoryMaxBytes": 600729190.0,
+            "pidsAvg": 66.68333333333334,
+            "pidsMax": 68.0,
+            "blockReadBytes": 0,
+            "blockWriteBytes": 258000,
+            "networkRxBytes": 38600000,
+            "networkTxBytes": 45100000
+          },
+          "db": {
+            "cpuAvgPercent": 15.244166666666667,
+            "cpuMaxPercent": 39.51,
+            "memoryAvgBytes": 228760835.41666666,
+            "memoryMaxBytes": 235719885.0,
+            "pidsAvg": 22.1,
+            "pidsMax": 28.0,
+            "blockReadBytes": 0,
+            "blockWriteBytes": 40000000,
+            "networkRxBytes": 30000000,
+            "networkTxBytes": 30000000
+          }
+        },
+        "locust": {
+          "cpuAvgPercent": 38.278333333333336,
+          "cpuMaxPercent": 46.9,
+          "rssMaxBytes": 79527936,
+          "sampleCount": 60
+        }
+      },
+      "gc": {
+        "pauseCount": 0,
+        "pauseTotalMs": 0,
+        "pauseMaxMs": 0.0,
+        "pauseTimesMs": []
+      },
+      "logs": {
+        "expectedCount": 27327,
+        "observedCount": 27327,
+        "countMatches": true,
+        "bytes": 6776842,
+        "bytesPerSecond": 112947.36666666667,
+        "outputDelayMedianMs": 0.644,
+        "outputDelayP95Ms": 0.983,
+        "outputDelayMaxMs": 6.048,
+        "negativeDelayCount": 0
+      },
+      "invalidReasons": []
+    },
+    {
+      "runId": "r_d2611090611d90a83_sync_05_00",
+      "mode": "sync",
+      "attempt": 0,
+      "validity": "VALID",
+      "p95Ms": 6.39779,
+      "successTps": 450.15,
+      "runPath": "runs/r_d2611090611d90a83_sync_05_00",
+      "runtime": {
+        "complete": true,
+        "measurementSampleCounts": {
+          "app": 60,
+          "db": 60
+        },
+        "containers": {
+          "app": {
+            "cpuAvgPercent": 21.444666666666667,
+            "cpuMaxPercent": 85.15,
+            "memoryAvgBytes": 590993162.2333333,
+            "memoryMaxBytes": 598107750.0,
+            "pidsAvg": 74.75,
+            "pidsMax": 80.0,
+            "blockReadBytes": 0,
+            "blockWriteBytes": 262000,
+            "networkRxBytes": 38200000,
+            "networkTxBytes": 44600000
+          },
+          "db": {
+            "cpuAvgPercent": 16.584333333333333,
+            "cpuMaxPercent": 41.36,
+            "memoryAvgBytes": 230744391.63333333,
+            "memoryMaxBytes": 232049869.0,
+            "pidsAvg": 22.016666666666666,
+            "pidsMax": 23.0,
+            "blockReadBytes": 0,
+            "blockWriteBytes": 270000000,
+            "networkRxBytes": 30000000,
+            "networkTxBytes": 20000000
+          }
+        },
+        "locust": {
+          "cpuAvgPercent": 36.553333333333335,
+          "cpuMaxPercent": 45.1,
+          "rssMaxBytes": 81477632,
+          "sampleCount": 60
+        }
+      },
+      "gc": {
+        "pauseCount": 0,
+        "pauseTotalMs": 0,
+        "pauseMaxMs": 0.0,
+        "pauseTimesMs": []
+      },
+      "logs": {
+        "expectedCount": 27009,
+        "observedCount": 27009,
+        "countMatches": true,
+        "bytes": 6698356,
+        "bytesPerSecond": 111639.26666666666,
+        "outputDelayMedianMs": 0.644,
+        "outputDelayP95Ms": 1.012,
+        "outputDelayMaxMs": 38.989000000000004,
+        "negativeDelayCount": 0
+      },
+      "invalidReasons": []
+    },
+    {
+      "runId": "r_d2611090611d90a83_async_06_00",
+      "mode": "async",
+      "attempt": 0,
+      "validity": "VALID",
+      "p95Ms": 4.58963,
+      "successTps": 453.6333333333333,
+      "runPath": "runs/r_d2611090611d90a83_async_06_00",
+      "runtime": {
+        "complete": true,
+        "measurementSampleCounts": {
+          "app": 60,
+          "db": 60
+        },
+        "containers": {
+          "app": {
+            "cpuAvgPercent": 18.214,
+            "cpuMaxPercent": 29.87,
+            "memoryAvgBytes": 586559433.4166666,
+            "memoryMaxBytes": 595381453.0,
+            "pidsAvg": 60.166666666666664,
+            "pidsMax": 61.0,
+            "blockReadBytes": 0,
+            "blockWriteBytes": 262000,
+            "networkRxBytes": 38500000,
+            "networkTxBytes": 45200000
+          },
+          "db": {
+            "cpuAvgPercent": 15.258166666666666,
+            "cpuMaxPercent": 40.02,
+            "memoryAvgBytes": 232748919.53333333,
+            "memoryMaxBytes": 239914189.0,
+            "pidsAvg": 22.05,
+            "pidsMax": 25.0,
+            "blockReadBytes": 0,
+            "blockWriteBytes": 40000000,
+            "networkRxBytes": 40000000,
+            "networkTxBytes": 30000000
+          }
+        },
+        "locust": {
+          "cpuAvgPercent": 38.221666666666664,
+          "cpuMaxPercent": 45.9,
+          "rssMaxBytes": 79200256,
+          "sampleCount": 60
+        }
+      },
+      "gc": {
+        "pauseCount": 0,
+        "pauseTotalMs": 0,
+        "pauseMaxMs": 0.0,
+        "pauseTimesMs": []
+      },
+      "logs": {
+        "expectedCount": 27218,
+        "observedCount": 27218,
+        "countMatches": true,
+        "bytes": 6749939,
+        "bytesPerSecond": 112498.98333333334,
+        "outputDelayMedianMs": 0.664,
+        "outputDelayP95Ms": 1.018,
+        "outputDelayMaxMs": 10.064,
+        "negativeDelayCount": 0
+      },
+      "invalidReasons": []
+    }
+  ],
+  "summaryAnalysisSha256": "0c03a3a7f7a2d1837dae25524b2a7dee538c7c25790de8723161b29d322c3ac2",
+  "transactionOutputDelayDefinition": "Docker log timestamp minus (APM startedAt + elapsedMs); this includes Docker logging and clock timestamping, not an isolated logger-call timer.",
+  "interpretation": "Compare ASYNC with SYNC while APM stays enabled. The diagnostic is not an AC07 PASS/FAIL measurement.",
+  "asyncP95ChangePercent": 0.38188182878964305,
+  "asyncSuccessTpsChangePercent": -0.20532375155826177,
+  "figureFile": "diagnostic-comparison.png"
+}

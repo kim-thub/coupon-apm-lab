@@ -1,0 +1,74 @@
+{
+  "runId": "r_11092304b3ccfc_pre_06_on_00",
+  "family": "pre",
+  "sequence": 6,
+  "apmEnabled": true,
+  "applicationImageId": "sha256:8b29869246440fd70145f5bfb1999fb28a8ef9024002966211232ff2f7869606",
+  "gitCommit": "e200c914a6478b09411ac06a86ddbc0624daa9fb",
+  "startedAt": "2026-11-09T23:15:27.525198+00:00",
+  "status": "VALID",
+  "load": {
+    "users": 100,
+    "spawnRatePerSecond": 10,
+    "durationSeconds": 60,
+    "waitBetweenRequestsSeconds": [
+      0.1,
+      0.3
+    ],
+    "stopGraceSeconds": 15
+  },
+  "warmupCouponsPerUser": 601,
+  "measureCouponsPerUser": 601,
+  "postgresVolumePolicy": "same PostgreSQL instance+volume; new run-owned database",
+  "phaseDatabasePolicy": "warmup and measurement share the SAME app process and DB",
+  "invalidReasons": [],
+  "database": "coupon_r_11092304b3ccfc_pre_06_on_00",
+  "appContainerId": "75bcbab50c3c7d670d6fb217a1a733efc3481adf85dc4e439218013799752ff8",
+  "actualApplicationImageId": "sha256:8b29869246440fd70145f5bfb1999fb28a8ef9024002966211232ff2f7869606",
+  "containerResources": {
+    "nanoCpus": 2000000000,
+    "memoryBytes": 805306368
+  },
+  "runtimeEnvironment": {
+    "APM_ENABLED": "true",
+    "SPRING_PROFILES_ACTIVE": "benchmark",
+    "JAVA_TOOL_OPTIONS": "-Xms256m -Xmx512m -XX:+UseG1GC"
+  },
+  "statusBeforeWarmup": {
+    "databaseReady": true,
+    "apmEnabled": true,
+    "ready": true,
+    "database": "coupon_r_11092304b3ccfc_pre_06_on_00",
+    "gitCommit": "e200c914a6478b09411ac06a86ddbc0624daa9fb",
+    "applicationVersion": "0.1.0"
+  },
+  "ddlVersion": "1",
+  "postgresVersion": "16.6 (Debian 16.6-1.pgdg120+1)",
+  "smoke": {
+    "couponId": 1,
+    "apmRecordObserved": true
+  },
+  "warmupCouponCount": 60100,
+  "warmupValidation": "VALID",
+  "statusBetweenPhases": {
+    "databaseReady": true,
+    "apmEnabled": true,
+    "ready": true,
+    "database": "coupon_r_11092304b3ccfc_pre_06_on_00",
+    "gitCommit": "e200c914a6478b09411ac06a86ddbc0624daa9fb",
+    "applicationVersion": "0.1.0"
+  },
+  "measureCouponCount": 60100,
+  "measureValidation": "VALID",
+  "statusAfterMeasure": {
+    "databaseReady": true,
+    "apmEnabled": true,
+    "ready": true,
+    "database": "coupon_r_11092304b3ccfc_pre_06_on_00",
+    "gitCommit": "e200c914a6478b09411ac06a86ddbc0624daa9fb",
+    "applicationVersion": "0.1.0"
+  },
+  "capturedAt": "2026-11-09T23:17:33.170240+00:00",
+  "xviewSampleCount": 1000,
+  "finishedAt": "2026-11-09T23:17:33.183795+00:00"
+}

@@ -13,7 +13,7 @@
 - `REVIEW_REQUIRED`: 동일 모드 내 변동성이 15% 초과하여 추가 해석 필요(자동 탈락 아님).
 - `PASS`/`FAIL`: 인수조건을 실제 실행하고 기대값·원본 기록으로 판정.
 
-성능 원본: `docs/evidence/overhead/<runId>/manifest.json`, `allocations-{phase}.json`, `{phase}/requests.csv`, `{phase}/writer_summary.json`, `{phase}/validation.json`, `{phase}/db-cross-check.json`, Locust 기본 CSV/로그 및 `comparison.csv`. 15초 유예 후 요청은 경계 기록으로 구분하여 p95/TPS에서 제외. 전용 DB의 소유는 DB COMMENT + Manifest로 확인.
+실행 시 생성되는 전체 성능 원본은 작업 디렉터리의 `docs/evidence/overhead/<runId>/` 아래 manifest, 요청 CSV, Locust 로그, phase별 DB 대조·validation을 포함합니다. 공개 후보에는 전체 원본을 넣지 않고 배치별 요약과 비교 파일, 선택된 manifest·validation만 둡니다. 전체 원본 백업과 SHA-256 목록은 공개 후보 검증 기록에 적힌 외부 ZIP에 보관합니다. 공개용 선택 자료만으로 요청별 p95를 다시 계산할 수는 없습니다. 15초 유예 후 요청은 경계 기록으로 구분하여 p95/TPS에서 제외합니다. 전용 DB의 소유는 DB COMMENT와 manifest로 확인합니다.
 
 ## 안전한 수동 정리
 - 실험 종료 후 자동 삭제하지 않음. `make clean-run RUN_ID=<id> CONFIRM=DROP:<id>:coupon_<id>`는 명시 확인, Manifest runId/DB 검증, PostgreSQL DB COMMENT 소유권 일치, 활성 연결 0일 때 해당 DB **하나**만 삭제.

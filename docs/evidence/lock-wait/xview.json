@@ -1,0 +1,14 @@
+{
+  "metadata": {
+    "experiment": "ac08_9b982135-33a4-4d58-a8b0-626ee190aa70",
+    "apmEnabled": true,
+    "capturedAt": "2026-11-09T02:19:13.093138Z"
+  },
+  "transactions": [
+    {
+      "id": "c5e10bf5-7c98-47ea-b539-95aee2463bb8",
+      "startedAt": "2026-11-09T02:19:12.443138Z",
+      "elapsedMs": 623
+    }
+  ]
+}

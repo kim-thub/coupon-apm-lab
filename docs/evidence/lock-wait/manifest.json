@@ -1,9 +1,9 @@
 {
-  "capturedAt" : "2026-11-09T00:52:54.374656Z",
-  "database" : "coupon_test",
-  "httpStatus" : 201,
-  "actualPgLockWait" : true,
+  "apmEnabled" : true,
+  "runId" : "ac08_c9a59c21-21b2-4643-afc1-9936b002b48f",
   "source" : "PostgresLockWaitHttpIT",
-  "runId" : "ac08_1a346673-e9b8-48f0-bb01-776b3827e89e",
-  "apmEnabled" : true
+  "actualPgLockWait" : true,
+  "httpStatus" : 201,
+  "database" : "coupon_test",
+  "capturedAt" : "2026-11-10T04:14:56.927867Z"
 }

@@ -1,0 +1,23 @@
+runId,apmEnabled,validity,p95Ms,successTps,httpRps
+r_11092304b3ccfc_offi_01_off_00,False,VALID,6.12096,450.75,450.75
+r_11092304b3ccfc_offi_02_on_00,True,VALID,4.31329,455.7,455.7
+r_11092304b3ccfc_offi_03_on_00,True,VALID,4.54271,454.78333333333336,454.78333333333336
+r_11092304b3ccfc_offi_04_off_00,False,VALID,4.78317,452.55,452.55
+r_11092304b3ccfc_offi_05_off_00,False,VALID,5.00379,454.0833333333333,454.0833333333333
+r_11092304b3ccfc_offi_06_on_00,True,VALID,4.93929,451.25,451.25
+
+validity,VALID
+target,PASS
+variance,REVIEW_REQUIRED
+offMedianP95Ms,5.00379
+onMedianP95Ms,4.54271
+offMedianTps,452.55
+onMedianTps,454.78333333333336
+p95IncreasePercent,-9.214615321586251
+successTpsDecreasePercent,-0.493499797444108
+runIds,"['r_11092304b3ccfc_offi_01_off_00', 'r_11092304b3ccfc_offi_02_on_00', 'r_11092304b3ccfc_offi_03_on_00', 'r_11092304b3ccfc_offi_04_off_00', 'r_11092304b3ccfc_offi_05_off_00', 'r_11092304b3ccfc_offi_06_on_00']"
+prelimRunIds,"['r_11092304b3ccfc_pre_01_off_00', 'r_11092304b3ccfc_pre_02_on_00', 'r_11092304b3ccfc_pre_03_on_00', 'r_11092304b3ccfc_pre_04_off_00', 'r_11092304b3ccfc_pre_05_off_00', 'r_11092304b3ccfc_pre_06_on_00']"
+M,304
+perUserCoupons,608
+gitCommit,e200c914a6478b09411ac06a86ddbc0624daa9fb
+createdAt,2026-11-09T23:30:06.421905+00:00
